@@ -58,7 +58,6 @@ Flatten
 Dense (aka Fully Connected) , 10 units
 """
 def build_model2():
-  model = None # Add code to define model 1.
   model = Sequential([
     layers.Input(shape=(32, 32, 3)),
     layers.Conv2D(32, (3, 3), strides=2, padding='same', activation='relu'),
@@ -141,7 +140,7 @@ if __name__ == '__main__':
   print(f"Test samples: {len(test_images)}")
   ########################################
   ## Build and train model 1
-  
+  print("\n--- Model 1 ---")
   model1 = build_model1()
   model1.compile(
         optimizer='adam',
@@ -170,9 +169,9 @@ if __name__ == '__main__':
                   'dog', 'frog', 'horse', 'ship', 'truck']
   print(f"Predicted class: {class_names[class_idx]}")
 
-  ## Build, compile, and train model 2 (DS Convolutions)
+  ## Build, compile, and train model 2
   model2 = build_model2()
-  print("\n--- Model 2: CNN ---")
+  print("\n--- Model 2 ---")
   model2 = build_model2()
   model2.compile(
     optimizer='adam',
@@ -191,7 +190,7 @@ if __name__ == '__main__':
   
   ### Repeat for model 3 and your best sub-50k params model
 
-  print("\n--- Model 3: CNN with Separable Convolutions ---")
+  print("\n--- Model 3  ---")
   model3 = build_model3()
   model3.compile(
     optimizer='adam',
@@ -208,7 +207,7 @@ if __name__ == '__main__':
   test_loss3, test_acc3 = model3.evaluate(test_images, test_labels, verbose=0)
   print(f"Model 3 - Test accuracy: {test_acc3:.4f}")
 
-  print("\n--- Best Model (<50k params) ---")
+  print("\n--- Small Model ---")
   model50k = build_model50k()
   model50k.compile(
         optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
@@ -224,10 +223,6 @@ if __name__ == '__main__':
   )
   test_loss_best, test_acc_best = model50k.evaluate(test_images, test_labels, verbose=0)
   print(f"Best Model - Test accuracy: {test_acc_best:.4f}")
-  if test_acc_best >= 0.60:
-      print("✓ Achieved at least 60% accuracy.")
-  else:
-      print("✗ Did not reach 60% accuracy.")
 
   # Save the best model
   model50k.save("best_model.h5")
