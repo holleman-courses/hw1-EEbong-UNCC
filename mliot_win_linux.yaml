@@ -1,0 +1,33 @@
+name: ml-iot
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pandas
+  - jupyterlab
+  - matplotlib
+  - networkx
+  - audioread
+  - bokeh
+  - ffmpeg
+  - gdown
+  - libsndfile
+  - librosa
+  - scikit-learn
+  - scipy
+  - seaborn
+  - pydot
+  - imageio
+  - pillow
+  - numba
+  ## PyPI packages
+  - pip:
+    - tensorflow[cuda]==2.14.0  # Simple version without CUDA
+    - keras-cv
+    - keras-tuner
+    - tensorflow-datasets
+    - pytest
+    - pydub
+    - scikeras[tensorflow]
